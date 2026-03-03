@@ -1,6 +1,8 @@
 // lib/main.dart
 import 'package:flutter/material.dart';
+// Importamos las pantallas apuntando a la subcarpeta pantallas
 import 'pantallas/sucursales.dart';
+import 'pantallas/buscar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,10 +13,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Ferreteria el patito',
-      home: SucursalesPage(),
+      // Definimos la ruta inicial (Sucursales)
+      initialRoute: '/',
+      // Definimos el mapa de rutas
+      routes: {
+        '/': (context) => const SucursalesPage(),
+        '/buscar': (context) => const BuscarPage(),
+        // Nota: prodsuc no se agrega aquí porque requiere parámetros obligatorios 
+        // en su constructor (nombre, tel, direccion).
+      },
     );
   }
 }
