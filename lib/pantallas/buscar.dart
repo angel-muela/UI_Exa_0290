@@ -1,6 +1,6 @@
 // lib/pantallas/buscar.dart
 import 'package:flutter/material.dart';
-import '../main.dart';
+import 'sucursales.dart'; // Importamos la nueva pantalla
 import 'prodsuc.dart'; 
 
 class BuscarPage extends StatelessWidget {
@@ -18,7 +18,6 @@ class BuscarPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // --- ENCABEZADO ---
             Container(
               width: double.infinity,
               color: naranjaFuerte,
@@ -40,7 +39,6 @@ class BuscarPage extends StatelessWidget {
 
             Container(height: 10, color: fondoOscuro),
 
-            // --- BARRA DE NAVEGACIÓN ---
             Container(
               height: 35,
               width: double.infinity,
@@ -51,7 +49,8 @@ class BuscarPage extends StatelessWidget {
                   _navText('buscar', () {}),
                   const Text('|', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
                   _navText('sucursales', () {
-                    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const MainMenu()), (route) => false);
+                    // CORREGIDO: Navegación a SucursalesPage
+                    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const SucursalesPage()), (route) => false);
                   }),
                   const Text('|', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
                   _navText('carrito', () {}),
@@ -61,11 +60,10 @@ class BuscarPage extends StatelessWidget {
               ),
             ),
 
-            // --- TÍTULO BUSCAR (Alineado a la izquierda con margen) ---
             Padding(
-              padding: const EdgeInsets.only(top: 30, bottom: 20, left: 20), // Se agregó left: 20
+              padding: const EdgeInsets.only(top: 30, bottom: 20, left: 20),
               child: Align(
-                alignment: Alignment.centerLeft, // Alineación a la izquierda
+                alignment: Alignment.centerLeft,
                 child: const Text(
                   "BUSCAR",
                   style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.white),
@@ -73,7 +71,6 @@ class BuscarPage extends StatelessWidget {
               ),
             ),
 
-            // --- CUADRO DE BÚSQUEDA ---
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Container(
@@ -99,7 +96,6 @@ class BuscarPage extends StatelessWidget {
 
             const SizedBox(height: 20),
 
-            // --- BOTONES DE FILTRO REDONDEADOS ---
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
@@ -115,7 +111,6 @@ class BuscarPage extends StatelessWidget {
 
             const SizedBox(height: 30),
 
-            // --- LISTADO DE PRODUCTOS ---
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Wrap(

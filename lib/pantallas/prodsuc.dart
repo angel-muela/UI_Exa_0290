@@ -1,7 +1,7 @@
 // lib/pantallas/prodsuc.dart
 import 'package:flutter/material.dart';
-import '../main.dart'; 
-import 'buscar.dart'; // <--- IMPORTANTE: Importamos la página de búsqueda
+import 'sucursales.dart'; // Importamos la nueva pantalla
+import 'buscar.dart'; 
 
 class ProdSucPage extends StatelessWidget {
   final String nombreSucursal, telefono, direccion;
@@ -52,16 +52,13 @@ class ProdSucPage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  // --- BOTÓN BUSCAR ACTUALIZADO ---
                   _navText('buscar', () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const BuscarPage()),
-                    );
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const BuscarPage()));
                   }),
                   const Text('|', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)), 
                   _navText('sucursales', () {
-                    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const MainMenu()), (route) => false);
+                    // CORREGIDO: Navegación a SucursalesPage
+                    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const SucursalesPage()), (route) => false);
                   }),
                   const Text('|', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)), 
                   _navText('carrito', () {}),

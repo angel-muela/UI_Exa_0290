@@ -1,4 +1,4 @@
-// lib/sucursal.dart
+// lib/pantallas/sucursal.dart
 class Sucursal {
   final String nombre;
   final String telefono;
